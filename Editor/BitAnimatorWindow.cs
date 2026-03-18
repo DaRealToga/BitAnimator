@@ -12,8 +12,8 @@ namespace AudioVisualization.Editor
         private int targetSlotIndex;
         private float previewTime = 0f;
         
-        // Visualizer config
-        private const float MAX_DISPLAY_FREQ = 8000f; // Limit to 8kHz so bass/mids take up most of the screen
+        
+        private const float MAX_DISPLAY_FREQ = 8000f; 
         private float[] currentSpectrum;
 
         public static void ShowWindow(BitAnimator animator, int slotIndex)
@@ -39,22 +39,22 @@ namespace AudioVisualization.Editor
             GUILayout.Label($"Editing Frequencies for: {slot.name}", EditorStyles.boldLabel);
             EditorGUILayout.Space();
 
-            // Timeline Scrubber
+            
             EditorGUILayout.LabelField("Timeline Scrubber (Seconds)");
             EditorGUI.BeginChangeCheck();
             previewTime = EditorGUILayout.Slider(previewTime, 0f, clip.length);
             if (EditorGUI.EndChangeCheck() || currentSpectrum == null)
             {
-                // Fetch live Burst FFT data for this exact millisecond
+                
                 currentSpectrum = targetAnimator.GetLiveSpectrum(previewTime);
                 Repaint();
             }
 
             EditorGUILayout.Space();
 
-            // --- DRAW THE SPECTROGRAM ---
+            
             Rect visualizerRect = GUILayoutUtility.GetRect(GUIContent.none, GUIStyle.none, GUILayout.Height(150), GUILayout.ExpandWidth(true));
-            EditorGUI.DrawRect(visualizerRect, new Color(0.1f, 0.1f, 0.1f)); // Dark background
+            EditorGUI.DrawRect(visualizerRect, new Color(0.1f, 0.1f, 0.1f)); 
 
             if (currentSpectrum != null && currentSpectrum.Length > 0)
             {
@@ -64,27 +64,27 @@ namespace AudioVisualization.Editor
 
                 float barWidth = visualizerRect.width / maxBinToDraw;
 
-                // Draw the frequency bars
+                
                 for (int i = 0; i < maxBinToDraw; i++)
                 {
                     float height = Mathf.Clamp01(currentSpectrum[i] * slot.volumeMultiplier) * visualizerRect.height;
                     Rect barRect = new Rect(visualizerRect.x + (i * barWidth), visualizerRect.yMax - height, barWidth, height);
                     
-                    // Highlight the bars that fall inside our current selection
+                    
                     float currentFreq = i * freqPerBin;
                     Color barColor = (currentFreq >= slot.startFreq && currentFreq <= slot.endFreq) ? Color.cyan : Color.gray;
                     
                     EditorGUI.DrawRect(barRect, barColor);
                 }
 
-                // Draw the Threshold Line
+                
                 float thresholdY = visualizerRect.yMax - (slot.threshold * visualizerRect.height);
                 EditorGUI.DrawRect(new Rect(visualizerRect.x, thresholdY, visualizerRect.width, 1), Color.red);
             }
 
             EditorGUILayout.Space();
             
-            // --- THE INTERACTIVE RANGE SLIDER ---
+            
             EditorGUILayout.LabelField("Drag to Isolate Frequencies (Cyan Bars)", EditorStyles.boldLabel);
             
             EditorGUI.BeginChangeCheck();
