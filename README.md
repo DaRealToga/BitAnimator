@@ -1,10 +1,10 @@
 # Bit Animator Pro
 
-A modernized, high-performance audio visualizer and animation baker for Unity 2022.3+. Designed for VRChat Avatar creators, VTubers, and Unity VFX artists.
+A modernized, high-performance audio visualizer and animation baker for Unity 2022.3.22f1. Designed for VRChat Avatar creators, VTubers, and Unity VFX artists.
 
 Bit Animator Pro analyzes audio tracks using an optimized Burst-compiled FFT engine, baking precise, beat-synced keyframes directly into Unity AnimationClips. Drive blendshapes, particle emissions, material colors, and transform scales based on frequency data.
 
-*Original repository: github.com/Leviant/BitAnimator* — Fully rewritten, modernized, and optimized by darealtoga.
+*Original repository: [Leviant/BitAnimator](https://github.com/Leviant/BitAnimator)* — Fully rewritten, modernized, and optimized by darealtoga.
 
 ---
 
