@@ -1,4 +1,5 @@
-﻿// Copyright © darealtoga. (The Ultimate VRChat Premium UI Edition)
+﻿// Copyright © 2026 DaRealToga 
+// Version 1.0 
 using System;
 using System.Collections;
 using System.Collections.Generic;

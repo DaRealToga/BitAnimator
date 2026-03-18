@@ -1,4 +1,5 @@
-// Copyright © 2021 Leviant. (The Interactive Spectrogram Visualizer)
+// Copyright © 2026 DaRealToga 
+// Version 1.0 
 using UnityEngine;
 using UnityEditor;
 using AudioVisualization;

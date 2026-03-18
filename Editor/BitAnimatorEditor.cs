@@ -1,4 +1,5 @@
-﻿// Copyright © 2026 darealtoga.
+﻿// Copyright © 2026 DaRealToga 
+// Version 1.0 
 using UnityEditor;
 using UnityEngine;
 using AudioVisualization;
